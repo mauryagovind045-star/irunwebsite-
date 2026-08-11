@@ -80,6 +80,21 @@ const causes = [
   },
 ];
 
+const partners = [
+  { img: "goa-tourism.png", name: "Goa Tourism" },
+  { img: "superyou.png", name: "SuperYou" },
+  { img: "sumit-group.png", name: "Sumit Group" },
+  { img: "ssrc-logistics.png", name: "SSRC Logistics" },
+  { img: "sandu-ayurveda.png", name: "Sandu Ayurveda" },
+  { img: "optica-indira.png", name: "Optica Indira" },
+  { img: "mindscape-construction.png", name: "Mindscape Construction and Real Estate" },
+  { img: "mindscape-properties.png", name: "Mindscape Properties" },
+  { img: "luxescape-realty.png", name: "Luxescape Realty" },
+  { img: "goa-luxe.png", name: "Goa Luxe" },
+  { img: "eleven-eleven.png", name: "11:11" },
+  { img: "squadrans-security.png", name: "Squadrans Security" },
+];
+
 const faqs = [
   {
     q: "When is the next edition?",
@@ -108,27 +123,30 @@ export default function Home() {
     <main>
       <Reveal />
       {/* ---------- nav ---------- */}
-      <header className="border-b border-white/10">
+      <header className="border-b border-[#0e1049]/10">
         <nav className="mx-auto flex w-[min(94%,80rem)] items-center justify-between py-4">
           <a href="#top" className="flex items-center gap-3">
             <img
-              src={`${bp}/logo-mark.png`}
+              src={`${bp}/logo-mark-navy.png`}
               alt="I-Run Goa Marathon logo"
               className="h-9 w-auto"
             />
             <span className="label">I-Run Goa Marathon</span>
           </a>
           <div className="nav-links items-center gap-10">
-            <a href="#story" className="label text-white/70 hover:text-white">
+            <a href="#story" className="label text-[#0e1049]/60 hover:text-[#0e1049]">
               Our story
             </a>
-            <a href="#races" className="label text-white/70 hover:text-white">
+            <a href="#races" className="label text-[#0e1049]/60 hover:text-[#0e1049]">
               Races
             </a>
-            <a href="#cause" className="label text-white/70 hover:text-white">
+            <a href="#cause" className="label text-[#0e1049]/60 hover:text-[#0e1049]">
               The cause
             </a>
-            <a href="#faq" className="label text-white/70 hover:text-white">
+            <a href="#partners" className="label text-[#0e1049]/60 hover:text-[#0e1049]">
+              Partners
+            </a>
+            <a href="#faq" className="label text-[#0e1049]/60 hover:text-[#0e1049]">
               FAQ
             </a>
           </div>
@@ -154,7 +172,7 @@ export default function Home() {
             className="absolute inset-0"
             style={{
               background:
-                "linear-gradient(180deg, rgba(11,12,14,0.5) 0%, rgba(11,12,14,0.08) 40%, rgba(11,12,14,0.92) 100%)",
+                "linear-gradient(180deg, rgba(14,16,73,0.55) 0%, rgba(14,16,73,0.1) 40%, rgba(14,16,73,0.92) 100%)",
             }}
           />
         </div>
@@ -163,11 +181,11 @@ export default function Home() {
             <div>
               <p
                 className="rise label mb-4"
-                style={{ color: "var(--accent)" }}
+                style={{ color: "var(--accent-bright)" }}
               >
                 [ 7th edition · Taleigao, Goa ]
               </p>
-              <h1 className="rise rise-2 display max-w-4xl text-[clamp(2.4rem,6vw,5.4rem)]">
+              <h1 className="rise rise-2 display max-w-4xl text-[clamp(2.4rem,6vw,5.4rem)] text-white">
                 The heartbeat of Goa&apos;s running community
               </h1>
             </div>
@@ -181,7 +199,11 @@ export default function Home() {
       </section>
 
       {/* ---------- our story ---------- */}
-      <section id="story" style={{ background: "var(--slate)" }}>
+      <section
+        id="story"
+        className="text-white"
+        style={{ background: "var(--slate)" }}
+      >
         <div className="mx-auto w-[min(94%,64rem)] py-24 text-center sm:py-32">
           <p className="label mb-10 text-white/50">Our story</p>
           <h2
@@ -205,12 +227,12 @@ export default function Home() {
               <path
                 className="route-path"
                 d="M10 240 C 110 90, 190 270, 300 170 S 470 40, 580 180 S 760 260, 840 80 L 868 96"
-                stroke="var(--accent)"
-                strokeOpacity="0.35"
+                stroke="var(--accent-bright)"
+                strokeOpacity="0.4"
                 strokeWidth="2"
                 strokeLinecap="round"
               />
-              <circle cx="868" cy="96" r="5" fill="var(--accent)" fillOpacity="0.5" />
+              <circle cx="868" cy="96" r="5" fill="var(--accent-bright)" fillOpacity="0.55" />
             </svg>
             <p className="ghost relative text-[clamp(4.5rem,15vw,13rem)]">
               7 EDITIONS
@@ -233,7 +255,7 @@ export default function Home() {
         </div>
         <div className="mx-auto w-[min(94%,80rem)] py-20 sm:py-28">
           <div data-reveal className="grid gap-10 lg:grid-cols-[14rem_1fr]">
-            <p className="label leading-loose text-white/50">
+            <p className="label leading-loose" style={{ color: "var(--gray)" }}>
               It&apos;s not about how fast you run. It&apos;s about not
               stopping.
             </p>
@@ -246,11 +268,15 @@ export default function Home() {
       </section>
 
       {/* ---------- race categories ---------- */}
-      <section id="races" style={{ background: "var(--coal)" }}>
+      <section
+        id="races"
+        className="text-white"
+        style={{ background: "var(--coal)" }}
+      >
         <div className="mx-auto w-[min(94%,80rem)] py-20 sm:py-28">
           <div className="mb-14 flex flex-wrap items-start justify-between gap-6">
             <div>
-              <p className="label" style={{ color: "var(--accent)" }}>
+              <p className="label" style={{ color: "var(--accent-bright)" }}>
                 [ Race categories ]
               </p>
               <p className="label mt-3 text-white/50">
@@ -272,11 +298,11 @@ export default function Home() {
               <div>
                 <h3 className="display text-[clamp(1.5rem,3vw,2.2rem)]">
                   {r.name} —{" "}
-                  <span style={{ color: "var(--accent)" }}>{r.kind}</span>
+                  <span style={{ color: "var(--accent-bright)" }}>{r.kind}</span>
                 </h3>
                 <p className="label tick mt-3 text-white/80">
                   {r.dist}{" "}
-                  <span style={{ color: "var(--accent)" }}>{r.tag}</span>
+                  <span style={{ color: "var(--accent-bright)" }}>{r.tag}</span>
                 </p>
               </div>
               <p className="text-sm leading-relaxed text-white/50">{r.desc}</p>
@@ -354,7 +380,10 @@ export default function Home() {
       {/* ---------- register ---------- */}
       <section id="join">
         <div className="mx-auto w-[min(94%,80rem)] py-24 sm:py-32">
-          <p className="label mb-16 text-center text-white/50">
+          <p
+            className="label mb-16 text-center"
+            style={{ color: "var(--gray)" }}
+          >
             Est. 2018 — 9 years of I-Help Foundation Goa
           </p>
           <div
@@ -377,7 +406,10 @@ export default function Home() {
             </h2>
           </div>
           <div className="mt-16 flex flex-wrap items-center justify-between gap-10">
-            <p className="label max-w-[16rem] leading-loose text-white/50">
+            <p
+              className="label max-w-[16rem] leading-loose"
+              style={{ color: "var(--gray)" }}
+            >
               Fitness, joy, and the satisfaction of a finish line that gives
               back to Goa.
             </p>
@@ -389,11 +421,48 @@ export default function Home() {
                 WhatsApp the team ↗
               </a>
             </div>
-            <p className="label text-right leading-loose text-white/50">
+            <p
+              className="label text-right leading-loose"
+              style={{ color: "var(--gray)" }}
+            >
               Goa University grounds
               <br />
               Taleigao · North Goa
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ---------- partners ---------- */}
+      <section id="partners" className="border-t border-[#0e1049]/10">
+        <div className="mx-auto w-[min(94%,80rem)] py-20 sm:py-28">
+          <div className="mb-12 flex flex-wrap items-end justify-between gap-6">
+            <div>
+              <p className="label" style={{ color: "var(--accent)" }}>
+                [ Our partners ]
+              </p>
+              <h2 className="display mt-4 text-[clamp(1.8rem,4vw,3rem)]">
+                The brands behind the start line
+              </h2>
+            </div>
+            <p
+              className="label max-w-[18rem] leading-loose"
+              style={{ color: "var(--gray)" }}
+            >
+              Every edition runs on the support of Goa&apos;s businesses and
+              institutions.
+            </p>
+          </div>
+          <div data-reveal className="partner-grid">
+            {partners.map((p) => (
+              <div key={p.img} className="partner-tile" title={p.name}>
+                <img
+                  src={`${bp}/partners/${p.img}`}
+                  alt={p.name}
+                  loading="lazy"
+                />
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -423,7 +492,7 @@ export default function Home() {
       </section>
 
       {/* ---------- footer ---------- */}
-      <footer>
+      <footer className="text-white" style={{ background: "var(--ink)" }}>
         <div className="mx-auto flex w-[min(94%,80rem)] items-center justify-between pt-16 pb-6">
           <p className="display text-[clamp(1rem,2.4vw,1.8rem)]">
             We don&apos;t just run
