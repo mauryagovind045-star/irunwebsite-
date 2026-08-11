@@ -1,23 +1,23 @@
 import type { Metadata } from "next";
-import { Poppins, Cinzel } from "next/font/google";
+import { Anton, Archivo } from "next/font/google";
 import "./globals.css";
 
-const poppins = Poppins({
+const anton = Anton({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-display",
+});
+
+const archivo = Archivo({
   weight: ["400", "500", "600", "700"],
   subsets: ["latin"],
   variable: "--font-body",
 });
 
-const cinzel = Cinzel({
-  weight: ["700"],
-  subsets: ["latin"],
-  variable: "--font-wordmark",
-});
-
 export const metadata: Metadata = {
-  title: "I-Run Goa Marathon — Running Group",
+  title: "I-Run Goa Marathon — Running Club",
   description:
-    "I-Run Goa Marathon is a community running group in Goa. Group runs every week, all paces welcome — join us on the road.",
+    "I-Run Goa Marathon is a community running club in Goa. Group runs every week, all paces welcome — where runners meet, motivate, and move forward.",
 };
 
 export default function RootLayout({
@@ -27,7 +27,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${poppins.variable} ${cinzel.variable}`}>
+      <body className={`${anton.variable} ${archivo.variable}`}>
         {children}
       </body>
     </html>
