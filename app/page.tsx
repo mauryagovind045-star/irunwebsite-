@@ -1,57 +1,105 @@
-import Countdown from "./countdown";
 import Reveal from "./reveal";
 
 const bp = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
-const sessions = [
-  {
-    img: "g5.jpg",
-    day: "Wednesday",
-    name: "Speed Run",
-    dist: "[ 5–8 KM ]",
-    time: "6:00 PM — 7:00 PM",
-    desc: "Track intervals with a warm-up jog, sprint repeats, recovery laps, and a cool-down stretch. Coach-led.",
-  },
+const REGISTER_URL =
+  "https://www.townscript.com/e/irun-goa-marathon-2026-7th-edition-323112";
+const RESULTS_URL =
+  "https://ifinish.in/eventresult/result-I-RUN-GOA-MARATHON-2026";
+const WHATSAPP_URL = "https://wa.me/919325173202";
+
+const races = [
   {
     img: "route.jpg",
-    day: "Saturday",
-    name: "Long Run",
-    dist: "[ 10–21 KM ]",
-    time: "5:30 AM — 7:30 AM",
-    desc: "The marathon builder. Steady pace groups, water stops on route, and sunrise over Goa's winding roads.",
+    name: "I-Run 32",
+    kind: "20 Miler",
+    dist: "[ 32 KM ]",
+    tag: "Timed · Chip bib",
+    desc: "The longest race on the card. A 20-mile test of months of training, run while Goa is still waking up.",
+  },
+  {
+    img: "g5.jpg",
+    name: "I-Run 21",
+    kind: "Half Marathon",
+    dist: "[ 21.1 KM ]",
+    tag: "Timed · Chip bib",
+    desc: "The classic half — the distance most runners train all season for, with full chip timing.",
+  },
+  {
+    img: "g4.jpg",
+    name: "I-Run 10",
+    kind: "Timed Run",
+    dist: "[ 10 KM ]",
+    tag: "Timed · Chip bib",
+    desc: "Fast, honest racing. Ten kilometres with a chip on your bib and a clock at the finish.",
   },
   {
     img: "g2.jpg",
-    day: "Sunday",
-    name: "Easy Run",
+    name: "I-Run 05",
+    kind: "Timed Run",
     dist: "[ 5 KM ]",
-    time: "6:00 AM — 7:00 AM",
-    desc: "Conversational pace, zero pressure. This is where first-timers start and fast runners recover.",
+    tag: "Timed · Chip bib",
+    desc: "Your first race distance, taken seriously — timed from gun to finish line.",
+  },
+  {
+    img: "family.jpg",
+    name: "I-Run 05",
+    kind: "Fun Run",
+    dist: "[ 5 KM ]",
+    tag: "Untimed",
+    desc: "No clock, no pressure. Run, jog, or walk it with family and friends.",
+  },
+  {
+    img: "g6.jpg",
+    name: "I-Run 02",
+    kind: "Charity Run",
+    dist: "[ 2 KM ]",
+    tag: "Untimed · For the cause",
+    desc: "Two kilometres where every step goes to the cause — open to all ages.",
   },
 ];
 
-const divisions = [
-  { num: "01", img: "g4.jpg", name: "Road Running" },
-  { num: "02", img: "g6.jpg", name: "Trail Running" },
-  { num: "03", img: "family.jpg", name: "Community Runs" },
+const causes = [
+  {
+    num: "01",
+    img: "g4.jpg",
+    name: "Child Education",
+    desc: "Through I-Educare, the foundation sponsors free education for underprivileged children across Goa.",
+  },
+  {
+    num: "02",
+    img: "g6.jpg",
+    name: "A Cleaner Goa",
+    desc: "I-Clean drives cleanliness and reduced plastic usage — awareness that starts on the race route.",
+  },
+  {
+    num: "03",
+    img: "family.jpg",
+    name: "A Greener Goa",
+    desc: "Tree plantation and soil conservation projects that outlast every finish line.",
+  },
 ];
 
 const faqs = [
   {
-    q: "How do I join the club?",
-    a: "Message us on WhatsApp or just show up at any session. We'll pair you with a pace group and introduce you around. No forms, no fees.",
+    q: "When is the next edition?",
+    a: "The 7th edition was run on Sunday, 4 January 2026 at Goa University grounds, Taleigao — 4:30 AM to 11:00 AM. The 8th edition will be announced on our Instagram and WhatsApp; registrations open on Townscript.",
   },
   {
-    q: "Do I need to be an experienced runner?",
-    a: "No. Every session has pace groups from 5:00 to 8:00 min/km, and the Sunday easy run is built for beginners. The only requirement is showing up.",
+    q: "What are the race categories?",
+    a: "Six categories: I-Run 32 KM (20 Miler), 21 KM (Half Marathon), 10 KM and 5 KM timed runs, a 5 KM fun run, and a 2 KM charity run. There's a distance for every age and every pace.",
   },
   {
-    q: "What should I bring to a group run?",
-    a: "Running shoes, comfortable clothes, and a water bottle. We plan the route, mark the water stops, and nobody gets left behind.",
+    q: "What does every participant get?",
+    a: "A medal, an e-certificate, an event t-shirt, post-run refreshments, and official photos. Timed categories also get a chip-timing bib and results on iFinish.",
   },
   {
-    q: "Is there a membership fee?",
-    a: "No. Running with us is free — you pay only your own race entry fees when we travel to events as a crew.",
+    q: "Where does the money go?",
+    a: "The event is organised by I-Help Foundation Goa, a registered NGO. Proceeds support free education for underprivileged children (I-Educare), cleanliness and plastic-reduction drives (I-Clean), tree plantation, and soil conservation.",
+  },
+  {
+    q: "How do I contact the team?",
+    a: "WhatsApp or call 93251 73202 / 82089 26671 / 78229 57198 / 95189 20790, or email irungoamarathon@gmail.com. Office: Gera Imperium Grand, Patto-Panjim, Goa.",
   },
 ];
 
@@ -74,18 +122,22 @@ export default function Home() {
             <a href="#story" className="label text-white/70 hover:text-white">
               Our story
             </a>
-            <a href="#schedule" className="label text-white/70 hover:text-white">
-              Schedule
+            <a href="#races" className="label text-white/70 hover:text-white">
+              Races
             </a>
-            <a href="#divisions" className="label text-white/70 hover:text-white">
-              Divisions
+            <a href="#cause" className="label text-white/70 hover:text-white">
+              The cause
             </a>
             <a href="#faq" className="label text-white/70 hover:text-white">
               FAQ
             </a>
           </div>
-          <a href="#join" className="label" style={{ color: "var(--accent)" }}>
-            Join us now ↗
+          <a
+            href={REGISTER_URL}
+            className="label"
+            style={{ color: "var(--accent)" }}
+          >
+            Register ↗
           </a>
         </nav>
       </header>
@@ -95,7 +147,7 @@ export default function Home() {
         <div className="treat grain relative h-[86vh] min-h-[34rem] overflow-hidden">
           <img
             src={`${bp}/images/hero.jpg`}
-            alt="I-Run Goa Marathon crew on a sunrise group run"
+            alt="Runners at the I-Run Goa Marathon"
             className="hero-settle h-full w-full object-cover"
           />
           <div
@@ -109,20 +161,20 @@ export default function Home() {
         <div className="absolute inset-x-0 bottom-0 pb-10">
           <div className="mx-auto flex w-[min(94%,80rem)] flex-wrap items-end justify-between gap-8">
             <div>
-              <a
-                href="#join"
-                className="rise label mb-4 inline-block"
+              <p
+                className="rise label mb-4"
                 style={{ color: "var(--accent)" }}
               >
-                [ Join the club ]
-              </a>
+                [ 7th edition · Taleigao, Goa ]
+              </p>
               <h1 className="rise rise-2 display max-w-4xl text-[clamp(2.4rem,6vw,5.4rem)]">
-                Where Goa&apos;s runners meet, motivate, and move forward
+                The heartbeat of Goa&apos;s running community
               </h1>
             </div>
             <div className="rise rise-3 label text-right leading-loose text-white/60">
-              Based in — Goa, India
-              <br />© 2026
+              Organised by — I-Help Foundation Goa
+              <br />
+              Est. 2018
             </div>
           </div>
         </div>
@@ -136,10 +188,10 @@ export default function Home() {
             data-reveal
             className="display mx-auto text-[clamp(1.5rem,3.2vw,2.4rem)] leading-tight"
           >
-            Running has always been more than sport. For us it&apos;s sunrise
-            alarms, quiet roads, and a crew{" "}
+            Since 2018, I-Run Goa Marathon has brought men, women, and children
+            of every age out of their homes and onto the road —{" "}
             <span className="text-white/40">
-              that turns strangers into training partners — every single week.
+              running as the key to health, inspiration, and community.
             </span>
           </h2>
           <div data-reveal className="relative mt-20">
@@ -161,10 +213,10 @@ export default function Home() {
               <circle cx="868" cy="96" r="5" fill="var(--accent)" fillOpacity="0.5" />
             </svg>
             <p className="ghost relative text-[clamp(4.5rem,15vw,13rem)]">
-              48,000 KM
+              7 EDITIONS
             </p>
             <p className="label relative mt-6 text-white/50">
-              Run together on Goa&apos;s roads and trails
+              2018 — 2026 · Run for a cause, run for Goa
             </p>
           </div>
         </div>
@@ -186,74 +238,84 @@ export default function Home() {
               stopping.
             </p>
             <h2 className="display text-[clamp(2.2rem,5.5vw,4.6rem)]">
-              We chase the path — from dawn till{" "}
-              <span style={{ color: "var(--accent)" }}>dusk/.</span>
+              From the 4:30 AM start gun to the{" "}
+              <span style={{ color: "var(--accent)" }}>last finisher/.</span>
             </h2>
           </div>
         </div>
       </section>
 
-      {/* ---------- training schedule ---------- */}
-      <section id="schedule" style={{ background: "var(--coal)" }}>
+      {/* ---------- race categories ---------- */}
+      <section id="races" style={{ background: "var(--coal)" }}>
         <div className="mx-auto w-[min(94%,80rem)] py-20 sm:py-28">
           <div className="mb-14 flex flex-wrap items-start justify-between gap-6">
             <div>
               <p className="label" style={{ color: "var(--accent)" }}>
-                [ Upcoming session ]
+                [ Race categories ]
               </p>
-              <Countdown />
+              <p className="label mt-3 text-white/50">
+                Every edition · Sunday · 4:30 AM — 11:00 AM
+              </p>
             </div>
-            <p className="label text-white/60">— Training schedule</p>
+            <a href={RESULTS_URL} className="label text-white/60 hover:text-white">
+              — 2026 results on iFinish ↗
+            </a>
           </div>
 
-          {sessions.map((s) => (
-            <article key={s.day} data-reveal className="session-row treat">
+          {races.map((r, i) => (
+            <article key={i} data-reveal className="session-row treat">
               <img
-                src={`${bp}/images/${s.img}`}
-                alt={`${s.day} ${s.name}`}
+                src={`${bp}/images/${r.img}`}
+                alt={`${r.name} ${r.kind}`}
                 className="h-24 w-full max-w-[11rem] object-cover"
               />
               <div>
                 <h3 className="display text-[clamp(1.5rem,3vw,2.2rem)]">
-                  {s.day} —{" "}
-                  <span style={{ color: "var(--accent)" }}>{s.name}</span>
+                  {r.name} —{" "}
+                  <span style={{ color: "var(--accent)" }}>{r.kind}</span>
                 </h3>
                 <p className="label tick mt-3 text-white/80">
-                  {s.dist}{" "}
-                  <span style={{ color: "var(--accent)" }}>{s.time}</span>
+                  {r.dist}{" "}
+                  <span style={{ color: "var(--accent)" }}>{r.tag}</span>
                 </p>
               </div>
-              <p className="text-sm leading-relaxed text-white/50">{s.desc}</p>
+              <p className="text-sm leading-relaxed text-white/50">{r.desc}</p>
             </article>
           ))}
         </div>
       </section>
 
-      {/* ---------- running division ---------- */}
+      {/* ---------- the cause ---------- */}
       <section
-        id="divisions"
+        id="cause"
         style={{ background: "var(--bone)", color: "var(--ink)" }}
       >
         <div className="mx-auto w-[min(94%,80rem)] py-20 sm:py-28">
-          <p className="label mb-14 text-center">Running division</p>
+          <p className="label mb-14 text-center">The cause</p>
           <div data-reveal className="mb-12 max-w-xl">
             <h2 className="display text-[clamp(2rem,4.5vw,3.4rem)]">
-              Run with purpose,{" "}
-              <span style={{ color: "var(--gray)" }}>connect with others</span>
+              Run for a cause,{" "}
+              <span style={{ color: "var(--gray)" }}>run for Goa</span>
             </h2>
           </div>
           <div data-reveal className="grid gap-8 sm:grid-cols-3">
-            {divisions.map((d) => (
-              <figure key={d.num}>
-                <figcaption className="label mb-3">{d.num}</figcaption>
+            {causes.map((c) => (
+              <figure key={c.num}>
+                <figcaption className="label mb-3">{c.num}</figcaption>
                 <div className="mono-photo aspect-[4/5] overflow-hidden">
                   <img
-                    src={`${bp}/images/${d.img}`}
-                    alt={d.name}
+                    src={`${bp}/images/${c.img}`}
+                    alt={c.name}
                     className="h-full w-full object-cover"
                   />
                 </div>
-                <p className="display mt-4 text-xl">{d.name}</p>
+                <p className="display mt-4 text-xl">{c.name}</p>
+                <p
+                  className="mt-2 text-sm leading-relaxed"
+                  style={{ color: "var(--gray-dark)" }}
+                >
+                  {c.desc}
+                </p>
               </figure>
             ))}
           </div>
@@ -270,34 +332,36 @@ export default function Home() {
             </div>
             <blockquote>
               <p className="display text-[clamp(1.5rem,3.4vw,2.6rem)]">
-                &ldquo;Whether it&apos;s personal milestones or team
-                achievements,{" "}
+                &ldquo;Everyone who stands at the start line began their journey
+                months before —{" "}
                 <span style={{ color: "var(--gray)" }}>
-                  we run with purpose, pushing limits and celebrating
-                  progress.&rdquo;
+                  training, and adding miles to their life.&rdquo;
                 </span>
               </p>
-              <p className="mt-8 max-w-lg text-sm leading-relaxed" style={{ color: "var(--gray-dark)" }}>
-                From casual joggers to competitive athletes chasing podiums —
-                we&apos;ve got a pace group that fits your ambition. Explore the
-                divisions and find where you belong.
+              <p
+                className="mt-8 max-w-lg text-sm leading-relaxed"
+                style={{ color: "var(--gray-dark)" }}
+              >
+                Every participant crosses the line to a medal, an e-certificate,
+                an event tee, refreshments, and official photos — and every
+                registration funds the foundation&apos;s work across Goa.
               </p>
             </blockquote>
           </div>
         </div>
       </section>
 
-      {/* ---------- join the club ---------- */}
+      {/* ---------- register ---------- */}
       <section id="join">
         <div className="mx-auto w-[min(94%,80rem)] py-24 sm:py-32">
           <p className="label mb-16 text-center text-white/50">
-            Est · Goa — present
+            Est. 2018 — 9 years of I-Help Foundation Goa
           </p>
           <div
             data-reveal
             className="flex flex-wrap items-center justify-center gap-x-10 gap-y-6"
           >
-            <h2 className="display text-[clamp(4rem,13vw,11rem)]">Join</h2>
+            <h2 className="display text-[clamp(4rem,13vw,11rem)]">Run</h2>
             <div className="treat h-[clamp(5rem,14vw,11rem)] w-[clamp(8rem,22vw,18rem)] overflow-hidden">
               <img
                 src={`${bp}/images/crew.jpg`}
@@ -309,26 +373,26 @@ export default function Home() {
               className="display text-[clamp(4rem,13vw,11rem)]"
               style={{ color: "var(--accent)" }}
             >
-              the club
+              for Goa
             </h2>
           </div>
           <div className="mt-16 flex flex-wrap items-center justify-between gap-10">
             <p className="label max-w-[16rem] leading-loose text-white/50">
-              We value discipline, encouragement, and fun — a community that
-              grows stronger with every stride.
+              Fitness, joy, and the satisfaction of a finish line that gives
+              back to Goa.
             </p>
             <div className="flex flex-wrap gap-4">
-              <a href="https://wa.me/910000000000" className="btn btn-accent">
-                Join on WhatsApp ↗
+              <a href={REGISTER_URL} className="btn btn-accent">
+                Register on Townscript ↗
               </a>
-              <a href="mailto:irungoamarathon@gmail.com" className="btn btn-ghost">
-                Email the crew ↗
+              <a href={WHATSAPP_URL} className="btn btn-ghost">
+                WhatsApp the team ↗
               </a>
             </div>
             <p className="label text-right leading-loose text-white/50">
-              Based in
+              Goa University grounds
               <br />
-              Goa, India
+              Taleigao · North Goa
             </p>
           </div>
         </div>
@@ -365,7 +429,7 @@ export default function Home() {
             We don&apos;t just run
           </p>
           <p className="display text-[clamp(1rem,2.4vw,1.8rem)] text-white/60">
-            We grow together
+            We run for Goa
           </p>
         </div>
         <div className="giant-wrap text-center" aria-hidden="true">
@@ -379,16 +443,29 @@ export default function Home() {
               aria-hidden="true"
               className="h-7 w-auto"
             />
+            <div className="flex flex-wrap items-center gap-6">
+              <a
+                href="https://www.instagram.com/irun_goa_marathon/"
+                className="label text-white/60 hover:text-white"
+              >
+                Instagram
+              </a>
+              <a
+                href="https://www.facebook.com/irungoamarathon"
+                className="label text-white/60 hover:text-white"
+              >
+                Facebook
+              </a>
+              <a
+                href="mailto:irungoamarathon@gmail.com"
+                className="label text-white/60 hover:text-white"
+              >
+                Email
+              </a>
+            </div>
             <p className="label text-white/40">
-              © 2026 I-Run Goa Marathon — see you on the road
+              © 2026 I-Run Goa Marathon · I-Help Foundation Goa
             </p>
-            <a
-              href="https://wa.me/910000000000"
-              className="label"
-              style={{ color: "var(--accent)" }}
-            >
-              Join us now ↗
-            </a>
           </div>
         </div>
       </footer>

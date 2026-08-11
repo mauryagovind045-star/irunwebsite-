@@ -15,9 +15,9 @@ const archivo = Archivo({
 });
 
 export const metadata: Metadata = {
-  title: "I-Run Goa Marathon — Running Club",
+  title: "I-Run Goa Marathon — Run for a Cause, Run for Goa",
   description:
-    "I-Run Goa Marathon is a community running club in Goa. Group runs every week, all paces welcome — where runners meet, motivate, and move forward.",
+    "The heartbeat of Goa's running community. Annual marathon by I-Help Foundation Goa with 32K, 21K, 10K, 5K, and 2K charity races at Goa University, Taleigao.",
 };
 
 export default function RootLayout({
