@@ -135,6 +135,20 @@ body {
   filter: saturate(1.05) contrast(1.04);
 }
 
+/* ---------- hero fits one viewport ---------- */
+
+.hero-fit {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 4.3rem);
+}
+
+@supports (height: 100svh) {
+  .hero-fit {
+    min-height: calc(100svh - 4.3rem);
+  }
+}
+
 /* ---------- speed streaks (from the logo) ---------- */
 
 .streaks {

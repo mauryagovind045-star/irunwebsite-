@@ -167,45 +167,47 @@ export default function Home() {
 
       {/* ---------- hero ---------- */}
       <section id="top">
-        <div className="mx-auto w-[min(94%,80rem)] pt-12 sm:pt-16">
-          <p className="rise label" style={{ color: "var(--accent)" }}>
-            [ Annual charity marathon · Goa University grounds, Taleigao ]
-          </p>
-          <h1 className="rise rise-2 display mt-6 text-[clamp(2.6rem,8vw,7rem)]">
-            The heartbeat
-            <span className="streaks" aria-hidden="true">
-              <i />
-              <i />
-              <i />
-            </span>
-            <br />
-            of Goa&apos;s running
-            <br />
-            <span className="outline-navy">community</span>
-            <span style={{ color: "var(--accent)" }}> /</span>
-          </h1>
-          <div className="rise rise-3 mt-10 flex flex-wrap items-center justify-between gap-x-10 gap-y-3 border-t border-[#0e1049]/10 pt-5 pb-10">
-            <p className="label" style={{ color: "var(--gray)" }}>
-              6 races · 2 — 32 KM
+        <div className="hero-fit">
+          <div className="mx-auto w-full max-w-[min(94%,80rem)] pt-8 sm:pt-12">
+            <p className="rise label" style={{ color: "var(--accent)" }}>
+              [ Annual charity marathon · Goa University grounds, Taleigao ]
             </p>
-            <p className="label" style={{ color: "var(--gray)" }}>
-              4:30 AM start gun · Sunday
-            </p>
-            <p className="label" style={{ color: "var(--gray)" }}>
-              7th edition · by I-Help Foundation Goa
+            <h1 className="rise rise-2 display mt-5 text-[clamp(2.3rem,6.4vw,5.6rem)]">
+              The heartbeat
+              <span className="streaks" aria-hidden="true">
+                <i />
+                <i />
+                <i />
+              </span>
+              <br />
+              of Goa&apos;s running
+              <br />
+              <span className="outline-navy">community</span>
+              <span style={{ color: "var(--accent)" }}> /</span>
+            </h1>
+            <div className="rise rise-3 mt-8 flex flex-wrap items-center justify-between gap-x-10 gap-y-3 border-t border-[#0e1049]/10 pt-4 pb-8">
+              <p className="label" style={{ color: "var(--gray)" }}>
+                6 races · 2 — 32 KM
+              </p>
+              <p className="label" style={{ color: "var(--gray)" }}>
+                4:30 AM start gun · Sunday
+              </p>
+              <p className="label" style={{ color: "var(--gray)" }}>
+                7th edition · by I-Help Foundation Goa
+              </p>
+            </div>
+          </div>
+          <div className="treat relative min-h-[16rem] flex-1 overflow-hidden">
+            <img
+              src={`${bp}/images/hero.jpg`}
+              alt="Runners at the I-Run Goa Marathon"
+              className="hero-settle absolute inset-0 h-full w-full object-cover object-[50%_18%]"
+            />
+            <p className="label absolute bottom-6 left-6 bg-[#0e1049] px-4 py-3 text-white">
+              <span style={{ color: "var(--accent-bright)" }}>04:30 AM</span> —
+              the start gun at Goa University
             </p>
           </div>
-        </div>
-        <div className="treat relative h-[58vh] min-h-[22rem] overflow-hidden">
-          <img
-            src={`${bp}/images/hero.jpg`}
-            alt="Runners at the I-Run Goa Marathon"
-            className="hero-settle h-full w-full object-cover"
-          />
-          <p className="label absolute bottom-6 left-6 bg-[#0e1049] px-4 py-3 text-white">
-            <span style={{ color: "var(--accent-bright)" }}>04:30 AM</span> —
-            the start gun at Goa University
-          </p>
         </div>
         <div className="marquee" aria-hidden="true">
           <div className="marquee-track display">
@@ -275,7 +277,7 @@ export default function Home() {
           <img
             src={`${bp}/images/challenge.jpg`}
             alt="Runner passing the checkered curb at dawn"
-            className="h-[52vh] min-h-[20rem] w-full object-cover"
+            className="h-[52vh] min-h-[20rem] w-full object-cover object-[50%_22%]"
           />
         </div>
         <div className="mx-auto w-[min(94%,80rem)] py-20 sm:py-28">
