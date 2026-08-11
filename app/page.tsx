@@ -1,4 +1,5 @@
 import Countdown from "./countdown";
+import Reveal from "./reveal";
 
 const bp = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
@@ -57,6 +58,7 @@ const faqs = [
 export default function Home() {
   return (
     <main>
+      <Reveal />
       {/* ---------- nav ---------- */}
       <header className="border-b border-white/10">
         <nav className="mx-auto flex w-[min(94%,80rem)] items-center justify-between py-4">
@@ -90,11 +92,11 @@ export default function Home() {
 
       {/* ---------- hero ---------- */}
       <section id="top" className="relative">
-        <div className="treat relative h-[86vh] min-h-[34rem]">
+        <div className="treat grain relative h-[86vh] min-h-[34rem] overflow-hidden">
           <img
             src={`${bp}/images/hero.jpg`}
             alt="I-Run Goa Marathon crew on a sunrise group run"
-            className="h-full w-full object-cover"
+            className="hero-settle h-full w-full object-cover"
           />
           <div
             className="absolute inset-0"
@@ -107,14 +109,18 @@ export default function Home() {
         <div className="absolute inset-x-0 bottom-0 pb-10">
           <div className="mx-auto flex w-[min(94%,80rem)] flex-wrap items-end justify-between gap-8">
             <div>
-              <p className="label mb-4" style={{ color: "var(--accent)" }}>
+              <a
+                href="#join"
+                className="rise label mb-4 inline-block"
+                style={{ color: "var(--accent)" }}
+              >
                 [ Join the club ]
-              </p>
-              <h1 className="display max-w-4xl text-[clamp(2.4rem,6vw,5.4rem)]">
+              </a>
+              <h1 className="rise rise-2 display max-w-4xl text-[clamp(2.4rem,6vw,5.4rem)]">
                 Where Goa&apos;s runners meet, motivate, and move forward
               </h1>
             </div>
-            <div className="label text-right leading-loose text-white/60">
+            <div className="rise rise-3 label text-right leading-loose text-white/60">
               Based in — Goa, India
               <br />© 2026
             </div>
@@ -126,16 +132,38 @@ export default function Home() {
       <section id="story" style={{ background: "var(--slate)" }}>
         <div className="mx-auto w-[min(94%,64rem)] py-24 text-center sm:py-32">
           <p className="label mb-10 text-white/50">Our story</p>
-          <h2 className="display mx-auto text-[clamp(1.5rem,3.2vw,2.4rem)] leading-tight">
+          <h2
+            data-reveal
+            className="display mx-auto text-[clamp(1.5rem,3.2vw,2.4rem)] leading-tight"
+          >
             Running has always been more than sport. For us it&apos;s sunrise
             alarms, quiet roads, and a crew{" "}
             <span className="text-white/40">
               that turns strangers into training partners — every single week.
             </span>
           </h2>
-          <div className="mt-20">
-            <p className="ghost text-[clamp(4.5rem,15vw,13rem)]">48,000 KM</p>
-            <p className="label mt-6 text-white/50">
+          <div data-reveal className="relative mt-20">
+            <svg
+              viewBox="0 0 900 300"
+              fill="none"
+              aria-hidden="true"
+              className="absolute inset-0 h-full w-full"
+              preserveAspectRatio="none"
+            >
+              <path
+                className="route-path"
+                d="M10 240 C 110 90, 190 270, 300 170 S 470 40, 580 180 S 760 260, 840 80 L 868 96"
+                stroke="var(--accent)"
+                strokeOpacity="0.35"
+                strokeWidth="2"
+                strokeLinecap="round"
+              />
+              <circle cx="868" cy="96" r="5" fill="var(--accent)" fillOpacity="0.5" />
+            </svg>
+            <p className="ghost relative text-[clamp(4.5rem,15vw,13rem)]">
+              48,000 KM
+            </p>
+            <p className="label relative mt-6 text-white/50">
               Run together on Goa&apos;s roads and trails
             </p>
           </div>
@@ -143,14 +171,16 @@ export default function Home() {
       </section>
 
       {/* ---------- the path ---------- */}
-      <section className="treat">
-        <img
-          src={`${bp}/images/challenge.jpg`}
-          alt="Runner passing the checkered curb at dawn"
-          className="h-[52vh] min-h-[20rem] w-full object-cover"
-        />
+      <section>
+        <div className="treat grain">
+          <img
+            src={`${bp}/images/challenge.jpg`}
+            alt="Runner passing the checkered curb at dawn"
+            className="h-[52vh] min-h-[20rem] w-full object-cover"
+          />
+        </div>
         <div className="mx-auto w-[min(94%,80rem)] py-20 sm:py-28">
-          <div className="grid gap-10 lg:grid-cols-[14rem_1fr]">
+          <div data-reveal className="grid gap-10 lg:grid-cols-[14rem_1fr]">
             <p className="label leading-loose text-white/50">
               It&apos;s not about how fast you run. It&apos;s about not
               stopping.
@@ -177,7 +207,7 @@ export default function Home() {
           </div>
 
           {sessions.map((s) => (
-            <article key={s.day} className="session-row treat">
+            <article key={s.day} data-reveal className="session-row treat">
               <img
                 src={`${bp}/images/${s.img}`}
                 alt={`${s.day} ${s.name}`}
@@ -206,13 +236,13 @@ export default function Home() {
       >
         <div className="mx-auto w-[min(94%,80rem)] py-20 sm:py-28">
           <p className="label mb-14 text-center">Running division</p>
-          <div className="mb-12 max-w-xl">
+          <div data-reveal className="mb-12 max-w-xl">
             <h2 className="display text-[clamp(2rem,4.5vw,3.4rem)]">
               Run with purpose,{" "}
               <span style={{ color: "var(--gray)" }}>connect with others</span>
             </h2>
           </div>
-          <div className="grid gap-8 sm:grid-cols-3">
+          <div data-reveal className="grid gap-8 sm:grid-cols-3">
             {divisions.map((d) => (
               <figure key={d.num}>
                 <figcaption className="label mb-3">{d.num}</figcaption>
@@ -227,7 +257,10 @@ export default function Home() {
               </figure>
             ))}
           </div>
-          <div className="mt-24 grid items-start gap-10 lg:grid-cols-[16rem_1fr]">
+          <div
+            data-reveal
+            className="mt-24 grid items-start gap-10 lg:grid-cols-[16rem_1fr]"
+          >
             <div className="mono-photo aspect-[4/3] w-full max-w-[16rem] overflow-hidden">
               <img
                 src={`${bp}/images/g3.jpg`}
@@ -260,7 +293,10 @@ export default function Home() {
           <p className="label mb-16 text-center text-white/50">
             Est · Goa — present
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-6">
+          <div
+            data-reveal
+            className="flex flex-wrap items-center justify-center gap-x-10 gap-y-6"
+          >
             <h2 className="display text-[clamp(4rem,13vw,11rem)]">Join</h2>
             <div className="treat h-[clamp(5rem,14vw,11rem)] w-[clamp(8rem,22vw,18rem)] overflow-hidden">
               <img
