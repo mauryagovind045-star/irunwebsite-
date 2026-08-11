@@ -27,8 +27,7 @@ One-time setup: in the GitHub repo go to **Settings → Pages** and set
   the paths in `app/page.tsx`). Resize to ≤2400px wide before committing.
 - **Weekly runs, stats, copy:** edit the arrays at the top of `app/page.tsx`.
 - **Countdown schedule:** edit the `RUNS` list in `app/countdown.tsx`.
-- **WhatsApp link:** replace the placeholder number in the `wa.me` link in
+- **WhatsApp link:** replace the placeholder number in the `wa.me` links in
   `app/page.tsx` with the group's real number.
-- **Logo:** the nav currently uses a wordmark + small runner icon. To use the
-  real logo, add `logo.png` to `public/` and swap it into the nav in
-  `app/page.tsx`.
+- **Logo:** `public/logo.png` is the original; `logo-dark.png` and
+  `logo-mark.png` are white/cyan variants generated for the dark theme.
