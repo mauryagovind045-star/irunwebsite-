@@ -80,6 +80,15 @@ const causes = [
   },
 ];
 
+const ticker = [
+  "Run for a cause",
+  "Run for Goa",
+  "Est. 2018",
+  "7 editions",
+  "2 — 32 KM",
+  "4:30 AM start gun",
+];
+
 const partners = [
   { img: "goa-tourism.png", name: "Goa Tourism" },
   { img: "superyou.png", name: "SuperYou" },
@@ -150,50 +159,66 @@ export default function Home() {
               FAQ
             </a>
           </div>
-          <a
-            href={REGISTER_URL}
-            className="label"
-            style={{ color: "var(--accent)" }}
-          >
+          <a href={REGISTER_URL} className="btn btn-accent btn-sm">
             Register ↗
           </a>
         </nav>
       </header>
 
       {/* ---------- hero ---------- */}
-      <section id="top" className="relative">
-        <div className="treat grain relative h-[86vh] min-h-[34rem] overflow-hidden">
+      <section id="top">
+        <div className="mx-auto w-[min(94%,80rem)] pt-12 sm:pt-16">
+          <p className="rise label" style={{ color: "var(--accent)" }}>
+            [ Annual charity marathon · Goa University grounds, Taleigao ]
+          </p>
+          <h1 className="rise rise-2 display mt-6 text-[clamp(2.6rem,8vw,7rem)]">
+            The heartbeat
+            <span className="streaks" aria-hidden="true">
+              <i />
+              <i />
+              <i />
+            </span>
+            <br />
+            of Goa&apos;s running
+            <br />
+            <span className="outline-navy">community</span>
+            <span style={{ color: "var(--accent)" }}> /</span>
+          </h1>
+          <div className="rise rise-3 mt-10 flex flex-wrap items-center justify-between gap-x-10 gap-y-3 border-t border-[#0e1049]/10 pt-5 pb-10">
+            <p className="label" style={{ color: "var(--gray)" }}>
+              6 races · 2 — 32 KM
+            </p>
+            <p className="label" style={{ color: "var(--gray)" }}>
+              4:30 AM start gun · Sunday
+            </p>
+            <p className="label" style={{ color: "var(--gray)" }}>
+              7th edition · by I-Help Foundation Goa
+            </p>
+          </div>
+        </div>
+        <div className="treat relative h-[58vh] min-h-[22rem] overflow-hidden">
           <img
             src={`${bp}/images/hero.jpg`}
             alt="Runners at the I-Run Goa Marathon"
             className="hero-settle h-full w-full object-cover"
           />
-          <div
-            className="absolute inset-0"
-            style={{
-              background:
-                "linear-gradient(180deg, rgba(14,16,73,0.55) 0%, rgba(14,16,73,0.1) 40%, rgba(14,16,73,0.92) 100%)",
-            }}
-          />
+          <p className="label absolute bottom-6 left-6 bg-[#0e1049] px-4 py-3 text-white">
+            <span style={{ color: "var(--accent-bright)" }}>04:30 AM</span> —
+            the start gun at Goa University
+          </p>
         </div>
-        <div className="absolute inset-x-0 bottom-0 pb-10">
-          <div className="mx-auto flex w-[min(94%,80rem)] flex-wrap items-end justify-between gap-8">
-            <div>
-              <p
-                className="rise label mb-4"
-                style={{ color: "var(--accent-bright)" }}
-              >
-                [ 7th edition · Taleigao, Goa ]
-              </p>
-              <h1 className="rise rise-2 display max-w-4xl text-[clamp(2.4rem,6vw,5.4rem)] text-white">
-                The heartbeat of Goa&apos;s running community
-              </h1>
-            </div>
-            <div className="rise rise-3 label text-right leading-loose text-white/60">
-              Organised by — I-Help Foundation Goa
-              <br />
-              Est. 2018
-            </div>
+        <div className="marquee" aria-hidden="true">
+          <div className="marquee-track display">
+            {[0, 1].map((n) => (
+              <div className="marquee-seg" key={n}>
+                {ticker.map((t) => (
+                  <span className="marquee-item" key={t}>
+                    {t}
+                    <span className="marquee-slash">/</span>
+                  </span>
+                ))}
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -378,12 +403,13 @@ export default function Home() {
       </section>
 
       {/* ---------- register ---------- */}
-      <section id="join">
+      <section
+        id="join"
+        className="text-white"
+        style={{ background: "var(--accent)" }}
+      >
         <div className="mx-auto w-[min(94%,80rem)] py-24 sm:py-32">
-          <p
-            className="label mb-16 text-center"
-            style={{ color: "var(--gray)" }}
-          >
+          <p className="label mb-16 text-center text-white/70">
             Est. 2018 — 9 years of I-Help Foundation Goa
           </p>
           <div
@@ -400,31 +426,25 @@ export default function Home() {
             </div>
             <h2
               className="display text-[clamp(4rem,13vw,11rem)]"
-              style={{ color: "var(--accent)" }}
+              style={{ color: "var(--accent-bright)" }}
             >
               for Goa
             </h2>
           </div>
           <div className="mt-16 flex flex-wrap items-center justify-between gap-10">
-            <p
-              className="label max-w-[16rem] leading-loose"
-              style={{ color: "var(--gray)" }}
-            >
+            <p className="label max-w-[16rem] leading-loose text-white/70">
               Fitness, joy, and the satisfaction of a finish line that gives
               back to Goa.
             </p>
             <div className="flex flex-wrap gap-4">
-              <a href={REGISTER_URL} className="btn btn-accent">
+              <a href={REGISTER_URL} className="btn btn-light">
                 Register on Townscript ↗
               </a>
-              <a href={WHATSAPP_URL} className="btn btn-ghost">
+              <a href={WHATSAPP_URL} className="btn btn-ghost-light">
                 WhatsApp the team ↗
               </a>
             </div>
-            <p
-              className="label text-right leading-loose"
-              style={{ color: "var(--gray)" }}
-            >
+            <p className="label text-right leading-loose text-white/70">
               Goa University grounds
               <br />
               Taleigao · North Goa
